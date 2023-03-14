@@ -1,0 +1,16 @@
+{
+  "name": "a11yTalkDemos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LuckyNkosi/a11yTalkDemos.git",
+  "author": "Lucky Nkosi <lucky.nnkosi@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
