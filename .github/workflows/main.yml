@@ -27,11 +27,6 @@ jobs:
 
       - name: Install
         run: npm i
-      
-      - name: start server
-        run: npm run start:ci &
-        env:
-          PORT: 3003
         
       - name: Run a11y tests
         run: npm run start & sleep 5; npm run test-pa11y
