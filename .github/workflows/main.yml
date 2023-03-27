@@ -1,0 +1,37 @@
+name: 'Test Code for a11y issues'
+
+on:  
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+# This allows a subsequently queued workflow run to interrupt previous runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest # This is the default, but it's here for clarity
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
+
+      - name: Install
+        run: npm ci
+      
+      - name: start server
+        run: npm run start:ci &
+        env:
+          PORT: 3003
+        
+      - name: Run a11y tests
+        run: npm run start & sleep 5; npm run test-pa11y
