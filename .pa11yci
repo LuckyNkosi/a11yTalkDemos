@@ -1,0 +1,9 @@
+{
+    "defaults": {
+        "timeout": 10000
+    },
+    "urls": [
+        "http://localhost:3003/",
+        "http://localhost:3003/about"
+    ]
+}
