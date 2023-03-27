@@ -26,7 +26,7 @@ jobs:
           cache: npm
 
       - name: Install
-        run: npm ci
+        run: npm i
       
       - name: start server
         run: npm run start:ci &
