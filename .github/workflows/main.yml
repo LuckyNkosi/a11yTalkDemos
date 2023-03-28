@@ -25,9 +25,9 @@ jobs:
           node-version: '14'
           cache: yarn
       - name: startup
-      uses: ./
-      with: 
-        working-directory: './'
-        install: 'yarn'
-        test: 'yarn test'
-        wait-on: 'http://localhost:3000'
+        uses: ./
+        with: 
+          working-directory: './'
+          install: 'yarn'
+          test: 'yarn test'
+          wait-on: 'http://localhost:3000'
