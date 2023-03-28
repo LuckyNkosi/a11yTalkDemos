@@ -13,21 +13,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-a11y:
+  pa11y:
     runs-on: ubuntu-latest # This is the default, but it's here for clarity
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: yarn
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
 
       - run: yarn
       - run: npm run build --if-present
       - run: yarn start & npx wait-on http://localhost:3003
-      - run: |
-            npm install -g pa11y
-            pa11y http://localhost:3003
+      - run: yarn test
