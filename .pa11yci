@@ -3,6 +3,7 @@
         "timeout": 10000
     },
     "urls": [
-        "https://cdpn.io/pen/debug/yLqOaEP"
+        "https://cdpn.io/pen/debug/yLqOaEP",
+        "http://127.0.0.1:3003/"
     ]
 }
