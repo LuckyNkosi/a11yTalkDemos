@@ -24,10 +24,13 @@ jobs:
         with:
           node-version: '14'
           cache: yarn
+
       - name: startup
         uses: ./
         with: 
           working-directory: './'
           install: 'yarn'
-          test: 'yarn test'
-          wait-on: 'http://localhost:3000'
+          run: 'yarn start'
+          wait-on: 'http://localhost:3000',
+          test: 'yarn pa11y-ci'
+
