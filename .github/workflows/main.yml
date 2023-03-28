@@ -27,10 +27,10 @@ jobs:
 
       - name: startup
         uses: ./
-        with: 
+        with:
           working-directory: './'
           install: 'yarn'
           run: 'yarn start'
-          wait-on: 'http://localhost:3000',
+          wait-on: 'http://localhost:3000'
           test: 'yarn pa11y-ci'
 
