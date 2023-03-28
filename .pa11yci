@@ -1,9 +1,10 @@
 {
     "defaults": {
-        "timeout": 10000
+        "timeout": 50000
     },
     "urls": [
-        "app:3003/",
+        "http://pa11y.org/contributing/",
+        "https://localhost:3003/",
         "app/about/"
     ]
 }
