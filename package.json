@@ -8,8 +8,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "test-pa11y": "./node_modules/.bin/pa11y-ci",
-    "p-test": "yarn start & sleep 5; yarn test-pa11y"
+    "test": "yarn start & sleep 10; yarn pa11y-ci"
   },
   "dependencies": {
     "cors": "^2.8.5",
