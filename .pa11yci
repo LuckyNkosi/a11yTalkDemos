@@ -4,6 +4,6 @@
     },
     "urls": [
         "https://cdpn.io/pen/debug/yLqOaEP",
-        "http://127.0.0.1:3003/"
+        "app:3003/"
     ]
 }
