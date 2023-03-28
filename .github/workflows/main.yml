@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Test Code for a11y issues:
+  test-a11y:
     runs-on: ubuntu-latest # This is the default, but it's here for clarity
     steps:
       - name: Checkout
