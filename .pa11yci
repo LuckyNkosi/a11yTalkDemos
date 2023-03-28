@@ -3,8 +3,7 @@
         "timeout": 50000
     },
     "urls": [
-        "http://pa11y.org/contributing/",
-        "https://localhost:3003/",
-        "app/about/"
+        "https://pa11y.org/contributing/",
+        "http://localhost:3003/"
     ]
 }

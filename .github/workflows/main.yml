@@ -17,16 +17,17 @@ jobs:
     runs-on: ubuntu-latest # This is the default, but it's here for clarity
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
           cache: yarn
-
-      - name: Install
-        run: yarn
-        
-      - name: Run a11y tests
-        run: yarn test
+      - name: startup
+      uses: ./
+      with: 
+        working-directory: './'
+        install: 'yarn'
+        test: 'yarn test'
+        wait-on: 'http://localhost:3000'
