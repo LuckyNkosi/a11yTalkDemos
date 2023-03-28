@@ -24,16 +24,11 @@ jobs:
         with:
           node-version: '16'
           cache: yarn
-          
+
       - run: yarn
       - run: npm run build --if-present
       - run: yarn start & npx wait-on http://localhost:3003
       - name: Run pa11y
-        run: |
-          npm install -g pa11y
-          pa11y http://localhost:3003
-          install: 'yarn'
-          run: 'yarn start'
-          wait-on: 'http://localhost:3003',
-          test: 'yarn pa11y-ci'
-
+          run: |
+            npm install -g pa11y
+            pa11y http://localhost:3000
