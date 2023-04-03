@@ -3,9 +3,8 @@
         "timeout": 50000
     },
     "urls": [
-        "http://0.0.0.0:3003/",
-        "http://127.0.0.0:3003/",
-        "http://localhost:3003/",
+        "http://app:3003",
+        "app:3003/",
         "https://cdpn.io/pen/debug/yLqOaEP"
     ]
 }
