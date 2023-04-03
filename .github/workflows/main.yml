@@ -15,6 +15,11 @@ concurrency:
 jobs:
   pa11y:
     runs-on: ubuntu-latest # This is the default, but it's here for clarity
+    services:
+      myapp:
+        command: node index.js
+        ports:
+          - 3000:3000
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js

@@ -9,31 +9,25 @@ on:
       - main
 
 jobs:
-  accessibility-tests:
+  test:
     runs-on: ubuntu-latest
-
+    services:
+      myapp:
+        command: node index.js
+        ports:
+          - 3000:3000
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: yarn install
-
-    - name: Start server
-      run: yarn start &
-      # The "&" character runs the command in the background.
-
-    - name: Wait for server to start
-      run: sleep 5s
-      # This step gives the server time to start up.
-
-    - name: Run accessibility tests
-      run: yarn pa11y-ci
-      env:
-        CI: true
-
-    - name: Upload pa11y report
-      uses: actions/upload-artifact@v2
-      with:
-        name: pa11y-report
-        path: ./pa11y-report/index.html
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      # Run your build step here
+      
+      - name: Start server
+        run: yarn start &
+        env:
+          MYAPP_URL: http://localhost:3000
+      
+      - name: Run accessibility tests
+        run: pa11y-ci --config pa11y-ci.config.json $MYAPP_URL
+        env:
+          PA11Y_RUN_ON_CI: true

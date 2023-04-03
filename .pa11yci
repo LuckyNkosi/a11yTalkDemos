@@ -1,12 +1,10 @@
 {
-    "url": "http://localhost:3000",
-    "standard": "WCAG2AA",
-    "timeout": 60000,
-    "reporter": [
-        "html"
-    ],
-    "htmlReport": {
-        "enabled": true,
-        "filename": "pa11y-report/index.html"
-    }
+    "default": {
+        "timeout": 50000
+    },
+    "urls": [
+        "http://app:3000",
+        "app:3000/",
+        "https://cdpn.io/pen/debug/yLqOaEP"
+    ]
 }
