@@ -17,15 +17,10 @@ jobs:
     runs-on: ubuntu-latest # This is the default, but it's here for clarity
     
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-    - name: Install dependencies
-      run: yarn --frozen-lockfile
-    - name: Run tests with ci
-      run: yarn ci
-    - name: Run tests just pa11y
-      run: yarn test:pa11y
-      env:
-          CI: true
+    - uses: actions/checkout@v1
+    - uses: browser-actions/setup-chrome@latest
+    - uses: Hesedi3l/pa11y-actions@v1
+      with:
+        start: start
+        port: '3000'
       
