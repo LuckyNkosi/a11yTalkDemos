@@ -1,0 +1,33 @@
+name: Accessibility Testing with pa11y
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Spin up local server
+        run: |
+          yarn start &
+          npx wait-on http://localhost:3000
+
+      - name: Run pa11y accessibility tests
+        run: |
+          yarn run pa11y-ci --config ./pa11y-ci.config.json
+
+      - name: Upload pa11y report
+        uses: actions/upload-artifact@v2
+        with:
+          name: pa11y-report
+          path: pa11y-ci-report.html

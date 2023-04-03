@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const pa11y = require('pa11y');
 const baseSites = require('./baseSites.json');
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());

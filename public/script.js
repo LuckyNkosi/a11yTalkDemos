@@ -14,7 +14,7 @@ const testSite = async () => {
     if (!url.validity.valid)
         return;
 
-    const response = await fetch(`http://localhost:3003/testSite?url=${url.value}`);
+    const response = await fetch(`http://localhost:3000/testSite?url=${url.value}`);
     const result = await response.json();
     console.log('====================================');
     console.log(result);
