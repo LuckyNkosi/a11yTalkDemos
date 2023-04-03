@@ -15,7 +15,7 @@ concurrency:
 jobs:
   pa11y:
     runs-on: ubuntu-latest # This is the default, but it's here for clarity
-
+    
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js
