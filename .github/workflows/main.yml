@@ -23,6 +23,8 @@ jobs:
         node-version: '16.x'
     - name: Install dependencies
       run: yarn --frozen-lockfile
-    - name: Run tests
+    - name: Run tests with ci
       run: yarn ci
+    - name: Run tests just pa11y
+      run: yarn test:pa11y
       
