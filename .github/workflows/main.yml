@@ -20,12 +20,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Use Node.js
       uses: actions/setup-node@v3
-      with:
-        node-version: '16.x'
     - name: Install dependencies
       run: yarn --frozen-lockfile
     - name: Run tests with ci
       run: yarn ci
     - name: Run tests just pa11y
       run: yarn test:pa11y
+      env:
+          CI: true
       
