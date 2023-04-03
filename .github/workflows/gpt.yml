@@ -13,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     services:
       myapp:
-        command: node index.js
+        command: node server.js
+        env:
+          CI: true
         ports:
           - 3000:3000
     steps:
@@ -22,12 +24,7 @@ jobs:
       
       # Run your build step here
       
-      - name: Start server
-        run: yarn start &
-        env:
-          MYAPP_URL: http://localhost:3000
-      
       - name: Run accessibility tests
-        run: pa11y-ci --config pa11y-ci.config.json $MYAPP_URL
+        run: pa11y-ci --config pa11y-ci.config.json http://localhost:3000
         env:
           PA11Y_RUN_ON_CI: true
