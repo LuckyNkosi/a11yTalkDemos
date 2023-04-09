@@ -11,7 +11,8 @@
     "test": "yarn pa11y-ci",
     "test:ci": "yarn start & wait-on http://localhost:3000 & pa11y-ci",
     "ci": "start-server-and-test start http://localhost:3000 test",
-    "test:pa11y": "start-server-and-test start http://localhost:3000 & pa11y-ci"
+    "test:pa11y": "start-server-and-test start http://localhost:3000 & pa11y-ci",
+    "test:jest": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,6 +23,9 @@
     "wait-on": "^7.0.1"
   },
   "devDependencies": {
+    "jest": "^29.5.0",
+    "jest-axe": "^7.0.1",
+    "jest-environment-jsdom": "^29.5.0",
     "start-server-and-test": "^2.0.0"
   }
 }
