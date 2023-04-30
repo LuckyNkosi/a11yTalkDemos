@@ -5,6 +5,26 @@ on:
     branches: [ main ]
 
 jobs:
+  puppeteer-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start server and Chrome
+      run: npm start & npx puppeteer --no-sandbox --disable-setuid-sandbox --remote-debugging-port=9222 --headless & sleep 5
+
+    - name: Run tests
+      run: |
+        npx pa11y-ci http://localhost:3000/ --fail-on-error
+
+    - name: Stop server and Chrome
+      run: pkill -f "npm start" && pkill -f "chrome"
+      
   pa11y-ci:
     runs-on: ubuntu-latest
 
