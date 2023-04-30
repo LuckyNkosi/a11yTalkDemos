@@ -1,0 +1,36 @@
+name: Pa11y-CI Test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  pa11y-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get install chromium-browser
+        npm install --global pa11y-ci
+
+    - name: Start Server and Launch Chrome
+      run: |
+        npm start &
+        google-chrome-stable --headless --disable-gpu --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 &
+
+    - name: Wait for Server and Chrome to be Ready
+      run: |
+        until nc -z localhost 3000; do sleep 1; done
+        until nc -z localhost 9222; do sleep 1; done
+
+    - name: Run Pa11y-CI Test
+      run: |
+        pa11y-ci http://localhost:3000 --chrome-remote http://localhost:9222
+
+    - name: Kill Server and Chrome
+      run: |
+        kill $(lsof -t -i:3000)
+        kill $(lsof -t -i:9222)
