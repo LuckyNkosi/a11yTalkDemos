@@ -10,15 +10,17 @@ app.use(cors());
 const sites = baseSites;
 app.use(express.static('public'));
 
-app.get('sitesTested', (req, res) => {
-    res.json(sites);
-});
-
 app.get('/testSite', async (req, res) => {
     console.log('test called');
     const url = req.query.url;
     const result = await pa11y(url);
     res.json(result);
+});
+
+
+
+app.get('sitesTested', (req, res) => {
+    res.json(sites);
 });
 
 app.post('/addSite', (req, res) => {
