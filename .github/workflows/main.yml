@@ -2,33 +2,35 @@ name: Pa11y-CI Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+    branches: [main]
 
-concurrency: 
+concurrency:
   group: ${{ github.head_ref }}
   cancel-in-progress: true
-  
+
 jobs:
   puppeteer-test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Start server and Chrome
-      run: npm start & npx puppeteer --no-sandbox --disable-setuid-sandbox --remote-debugging-port=9222 --headless & sleep 5
+      - name: Start server and Chrome
+        run: npm start & npx puppeteer --no-sandbox --disable-setuid-sandbox --remote-debugging-port=9222 --headless & sleep 5
 
-    - name: Run tests
-      run: |
-        npx pa11y-ci http://localhost:3000/ --error-level error
-    
-    - name: Run with script
-      run: |
-        yarn test:ci
+      - name: Run tests
+        run: |
+          npx pa11y-ci http://localhost:3000/
 
-    - name: Stop server and Chrome
-      run: pkill -f "npm start" && pkill -f "chrome"
+      - name: Run with script
+        run: |
+          yarn test:ci
+
+      - name: Stop server and Chrome
+        run: pkill -f "npm start" && pkill -f "chrome"
